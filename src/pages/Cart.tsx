@@ -1,63 +1,50 @@
-import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, RotateCcw } from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
 import CartItemRow from "../components/CartItemRow";
 import OrderSummary from "../components/OrderSummary";
-import { initialCartItems } from "../data/cartItems";
-import type { CartItem } from "../types/cart";
-
-const TAX_RATE = 0.08;
+import { useCart } from "../context/CartContext";
 
 export default function Cart() {
-  const [items, setItems] = useState<CartItem[]>(initialCartItems);
-  const [savedItems, setSavedItems] = useState<CartItem[]>([]);
-
-  function updateQuantity(id: string, quantity: number) {
-    setItems((prev) => prev.map((item) => (item.id === id ? { ...item, quantity } : item)));
-  }
-
-  function removeItem(id: string) {
-    setItems((prev) => prev.filter((item) => item.id !== id));
-  }
-
-  function saveForLater(id: string) {
-    setItems((prev) => {
-      const target = prev.find((item) => item.id === id);
-      if (target) setSavedItems((saved) => [...saved, target]);
-      return prev.filter((item) => item.id !== id);
-    });
-  }
-
-  function moveToCart(id: string) {
-    setSavedItems((prev) => {
-      const target = prev.find((item) => item.id === id);
-      if (target) setItems((cart) => [...cart, target]);
-      return prev.filter((item) => item.id !== id);
-    });
-  }
-
-  const { subtotal, shipping, tax, total } = useMemo(() => {
-    const sub = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const ship = items.reduce((sum, item) => sum + item.shippingCost * item.quantity, 0);
-    const taxAmount = sub * TAX_RATE;
-    return { subtotal: sub, shipping: ship, tax: taxAmount, total: sub + ship + taxAmount };
-  }, [items]);
+  const {
+    items,
+    savedItems,
+    updateQuantity,
+    removeItem,
+    saveForLater,
+    moveToCart,
+    subtotal,
+    shipping,
+    tax,
+    total,
+  } = useCart();
 
   return (
     <>
-      <Breadcrumb items={[{ label: "Home", to: "/" }, { label: "Pages" }, { label: "Cart" }]} />
+      <Breadcrumb
+        items={[
+          { label: "Home", to: "/" },
+          { label: "Pages" },
+          { label: "Cart" },
+        ]}
+      />
 
       <div className="mx-auto max-w-7xl px-6 py-10 sm:py-14">
         {items.length === 0 ? (
           <div className="flex flex-col items-center rounded-2xl bg-white py-20 text-center shadow-sm ring-1 ring-gray-100 dark:bg-gray-900 dark:ring-gray-800">
-            <ShoppingCart size={40} className="text-gray-300 dark:text-gray-600" />
+            <ShoppingCart
+              size={40}
+              className="text-gray-300 dark:text-gray-600"
+            />
+
             <h1 className="mt-4 text-xl font-bold text-gray-900 dark:text-white">
               Your cart is empty
             </h1>
+
             <p className="mt-1 text-sm text-gray-500 dark:text-gray-400">
               Looks like you haven't added anything yet.
             </p>
+
             <Link
               to="/"
               className="mt-6 rounded-lg bg-brand-500 px-6 py-3 text-sm font-extrabold uppercase tracking-wide text-white transition hover:bg-brand-600"
@@ -83,6 +70,7 @@ export default function Cart() {
                   <h2 className="mb-3 text-sm font-extrabold uppercase tracking-wide text-gray-500 dark:text-gray-400">
                     Saved for later
                   </h2>
+
                   <div className="space-y-3">
                     {savedItems.map((item) => (
                       <div
@@ -91,16 +79,26 @@ export default function Cart() {
                       >
                         <div className="flex items-center gap-3">
                           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg bg-white dark:bg-gray-900">
+                            {item.image && (
+                              <img
+                                src={item.image}
+                                alt={item.name}
+                                className="h-12 w-12 object-contain"
+                              />
+                            )}
                           </div>
+
                           <div>
                             <p className="text-sm font-semibold text-gray-800 dark:text-gray-100">
                               {item.name}
                             </p>
+
                             <p className="text-sm font-bold text-gray-500 dark:text-gray-400">
                               ${item.price.toFixed(2)}
                             </p>
                           </div>
                         </div>
+
                         <button
                           type="button"
                           onClick={() => moveToCart(item.id)}
@@ -117,7 +115,12 @@ export default function Cart() {
             </div>
 
             <div>
-              <OrderSummary subtotal={subtotal} shipping={shipping} tax={tax} total={total} />
+              <OrderSummary
+                subtotal={subtotal}
+                shipping={shipping}
+                tax={tax}
+                total={total}
+              />
             </div>
           </div>
         )}

@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext.tsx";
+import { CartProvider } from "./context/CartContext.tsx";
 import "./index.css";
 
 createRoot(document.getElementById("root")!).render(
@@ -11,7 +12,9 @@ createRoot(document.getElementById("root")!).render(
     <ThemeProvider>
       <BrowserRouter>
       <AuthProvider>
+        <CartProvider>
         <App />
+        </CartProvider>
         </AuthProvider>
       </BrowserRouter>
     </ThemeProvider>

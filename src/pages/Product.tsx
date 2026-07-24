@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useCart } from "../context/CartContext";
 import {
   Minus,
   Plus,
@@ -31,10 +32,14 @@ export default function Product() {
   const [quantity, setQuantity] = useState(1);
   const [wishlisted, setWishlisted] = useState(false);
   const [compared, setCompared] = useState(false);
+
+  const { addItem } = useCart();
+
   const [combo, setCombo] = useState<Record<string, boolean>>({
     main: true,
     ...Object.fromEntries(frequentlyBoughtWith.map((item) => [item.id, true])),
   });
+
   const [addedMessage, setAddedMessage] = useState("");
 
   const selectedColor = mainProduct.colors.find((c) => c.id === colorId) ?? mainProduct.colors[0];
@@ -55,8 +60,35 @@ export default function Product() {
   }, [combo, unitPrice]);
 
   function handleAddToCart() {
-    setAddedMessage(`Added ${quantity} × ${mainProduct.name} (${selectedColor.label}, ${selectedMemory.label}) to your cart.`);
-    window.setTimeout(() => setAddedMessage(""), 3000);
+    addItem({
+      id: `${mainProduct.slug}-${colorId}-${memoryId}`,
+      name: `${mainProduct.name} (${selectedColor.label}, ${selectedMemory.label})`,
+      price: unitPrice,
+      quantity,
+
+      // Required fields from CartItem
+      device: "phone",
+      shippingLabel: "Free Shipping",
+      shippingCost: 0,
+      inStock: true,
+
+      // Optional fields
+      image: mainProduct.image,
+      reviewCount: mainProduct.reviewCount,
+      freeGift: true,
+      badge: {
+        label: "New",
+        tone: "new",
+      },
+    });
+
+    setAddedMessage(
+      `Added ${quantity} × ${mainProduct.name} (${selectedColor.label}, ${selectedMemory.label}) to your cart.`
+    );
+
+    window.setTimeout(() => {
+      setAddedMessage("");
+    }, 3000);
   }
 
   return (
