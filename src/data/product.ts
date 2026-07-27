@@ -57,7 +57,7 @@ export const mainProduct = {
   },
 };
 
-export const frequentlyBoughtWith: ProductCard[] = [
+export const frequentlyBoughtWith = [
   {
     id: "boso-headphone",
     name: "BOSO 2 Wireless On Ear Headphone",
@@ -72,7 +72,7 @@ export const frequentlyBoughtWith: ProductCard[] = [
   },
 ];
 
-export const relatedProducts: ProductCard[] = [
+export const relatedProducts = [
   {
     id: "srok-oled-128",
     name: "SROK Smart Phone 128GB, Oled Retina",
@@ -131,7 +131,7 @@ export const relatedProducts: ProductCard[] = [
   },
 ];
 
-export const recentlyViewed: ProductCard[] = [
+export const recentlyViewed = [
   {
     id: "xomie-remid-8",
     name: "Xomie Remid 8 Sport Water Resistance Watch",

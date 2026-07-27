@@ -1,22 +1,23 @@
 import type { ProductCard } from "../types/product";
-import srok from "../assets/srok.png"
-import ulosk from "../assets/uLosk.png"
-import watch from "../assets/watch.png"
-import ismart from "../assets/ismart.png"
-import opod from "../assets/opod.png"
-import apod from "../assets/apod.png"
-import x6 from "../assets/x6.png"
-import microsute from "../assets/microsute.png"
-import opodpro from "../assets/opodpro.png"
-import redmi11 from "../assets/redmi11.png"
-import apodpro from "../assets/apodpro.png"
-import lenovo from "../assets/lenovo.png"
-import lg from "../assets/lg.png"
-import x6u from "../assets/x6u.png"
-import srok1 from "../assets/srok1.png"
-import srokm from "../assets/srokm.png"
-import redmi5 from "../assets/redmi5.png"
-import headset from "../assets/headset.png"
+
+import srok from "../assets/srok.png";
+import ulosk from "../assets/uLosk.png";
+import watch from "../assets/watch.png";
+import ismart from "../assets/ismart.png";
+import opod from "../assets/opod.png";
+import apod from "../assets/apod.png";
+import x6 from "../assets/x6.png";
+import microsute from "../assets/microsute.png";
+import opodpro from "../assets/opodpro.png";
+import redmi11 from "../assets/redmi11.png";
+import apodpro from "../assets/apodpro.png";
+import lenovo from "../assets/lenovo.png";
+import lg from "../assets/lg.png";
+import x6u from "../assets/x6u.png";
+import srok1 from "../assets/srok1.png";
+import srokm from "../assets/srokm.png";
+import redmi5 from "../assets/redmi5.png";
+import headset from "../assets/headset.png";
 
 export const bestSellers: ProductCard[] = [
   {
@@ -29,6 +30,15 @@ export const bestSellers: ProductCard[] = [
     freeGift: true,
     stockStatus: "in-stock",
     image: headset,
+
+    category: "Accessories",
+    brand: "BOSO",
+    rating: 5,
+    screenSize: "N/A",
+    memory: "N/A",
+    colors: ["#000000"],
+    condition: "New",
+    year: 2024,
   },
   {
     id: "ulosk-mini-case",
@@ -36,11 +46,24 @@ export const bestSellers: ProductCard[] = [
     price: 1729,
     originalPrice: 2119,
     device: "laptop",
-    badge: { label: "Save", sublabel: "$59.00", tone: "save" },
+    badge: {
+      label: "Save",
+      sublabel: "$59.00",
+      tone: "save",
+    },
     reviewCount: 8,
     shippingLabel: "Free Shipping",
     stockStatus: "out-of-stock",
     image: ulosk,
+
+    category: "Laptops",
+    brand: "uLosk",
+    rating: 4,
+    screenSize: '15.6"',
+    memory: "512GB",
+    colors: ["#C0C0C0"],
+    condition: "New",
+    year: 2023,
   },
   {
     id: "opplo-watch-8",
@@ -51,6 +74,15 @@ export const bestSellers: ProductCard[] = [
     shippingLabel: "$2.98 Shipping",
     stockStatus: "pre-order",
     image: watch,
+
+    category: "Wearables",
+    brand: "Opplo",
+    rating: 5,
+    screenSize: '1.9"',
+    memory: "64GB",
+    colors: ["#000000", "#C0C0C0"],
+    condition: "New",
+    year: 2024,
   },
   {
     id: "ismart-24v-charger",
@@ -61,6 +93,15 @@ export const bestSellers: ProductCard[] = [
     shippingLabel: "$3.98 Shipping",
     stockStatus: "contact",
     image: ismart,
+
+    category: "Accessories",
+    brand: "iSmart",
+    rating: 4,
+    screenSize: "N/A",
+    memory: "N/A",
+    colors: ["#FFFFFF"],
+    condition: "New",
+    year: 2022,
   },
   {
     id: "opod-pro-12-9-best",
@@ -68,51 +109,105 @@ export const bestSellers: ProductCard[] = [
     price: 569,
     originalPrice: 759,
     device: "tablet",
-    badge: { label: "Save", sublabel: "$199.00", tone: "save" },
+    badge: {
+      label: "Save",
+      sublabel: "$199.00",
+      tone: "save",
+    },
     reviewCount: 152,
     shippingLabel: "Free Shipping",
     stockStatus: "in-stock",
     image: opod,
+
+    category: "Tablets",
+    brand: "OPod",
+    rating: 5,
+    screenSize: '12.9"',
+    memory: "64GB",
+    colors: ["#808080", "#C0C0C0"],
+    condition: "New",
+    year: 2023,
   },
 ];
 
-
 export const shopProducts: ProductCard[] = [
-  {
+    {
     id: "srok-oled-128-1",
     name: "SROK Smart Phone 128GB, Oled Retina",
     price: 579,
     originalPrice: 859,
     device: "phone",
-    badge: { label: "Save", sublabel: "$199.00", tone: "save" },
+    badge: {
+      label: "Save",
+      sublabel: "$199.00",
+      tone: "save",
+    },
     reviewCount: 152,
     shippingLabel: "Free Shipping",
     stockStatus: "in-stock",
     image: srok,
+
+    category: "Phones",
+    brand: "SROK",
+    rating: 5,
+    screenSize: '6.7"',
+    memory: "128GB",
+    colors: ["#000000", "#2563EB"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#000000", "#2563EB"],
   },
+
   {
     id: "apod-pro-tablet-1",
     name: "aPod Pro Tablet 2023 LTE + Wifi, GPS Cellular 12.9 Inch, 512GB",
     priceRange: [979, 1259],
     device: "tablet",
-    badge: { label: "New", tone: "new" },
+    badge: {
+      label: "New",
+      tone: "new",
+    },
     shippingLabel: "$2.98 Shipping",
     stockStatus: "in-stock",
     image: apod,
+
+    category: "Tablets",
+    brand: "aPod",
+    rating: 5,
+    screenSize: '12.9"',
+    memory: "512GB",
+    colors: ["#C0C0C0", "#6B7280"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#C0C0C0", "#6B7280"],
   },
+
   {
     id: "samsong-x6-1",
     name: "Samsong Galaxy X6 Ultra LTE 4G/128 Gb, Black Smartphone",
     price: 659,
     device: "phone-alt",
-    badge: { label: "New", tone: "new" },
+    badge: {
+      label: "New",
+      tone: "new",
+    },
     reviewCount: 5,
     shippingLabel: "Free Shipping",
     freeGift: true,
     stockStatus: "in-stock",
-    swatches: ["#2a3a63", "#4b2e63"],
     image: x6,
+
+    category: "Phones",
+    brand: "Samsong",
+    rating: 4,
+    screenSize: '6.8"',
+    memory: "128GB",
+    colors: ["#2A3A63", "#4B2E63"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#2A3A63", "#4B2E63"],
   },
+
   {
     id: "xiaomi-redmi-note-5-1",
     name: "Xiaomi Redmi Note 5, 64GB",
@@ -122,29 +217,64 @@ export const shopProducts: ProductCard[] = [
     reviewCount: 9,
     stockStatus: "contact",
     image: redmi5,
+
+    category: "Phones",
+    brand: "Xiaomi",
+    rating: 4,
+    screenSize: '6.5"',
+    memory: "64GB",
+    colors: ["#000000", "#FFFFFF"],
+    condition: "Refurbished",
+    year: 2022,
   },
+
   {
     id: "microsute-alpha-s5-1",
-    name: "Microsute Alpha Ultra S5 Surface 128GB 2022, Sliver",
+    name: "Microsute Alpha Ultra S5 Surface 128GB 2022, Silver",
     price: 1729,
     device: "tablet",
     shippingLabel: "Free Shipping",
     stockStatus: "contact",
-    swatches: ["#1c1c1e", "#c9c9cf"],
     image: microsute,
+
+    category: "Tablets",
+    brand: "Microsute",
+    rating: 5,
+    screenSize: '13"',
+    memory: "128GB",
+    colors: ["#1C1C1E", "#C9C9CF"],
+    condition: "New",
+    year: 2022,
+    swatches: ["#1C1C1E", "#C9C9CF"],
   },
+
   {
     id: "opod-pro-12-9-1",
     name: "OPod Pro 12.9 Inch M1 2023, 64GB + Wifi, GPS",
     price: 569,
     originalPrice: 759,
     device: "tablet",
-    badge: { label: "Save", sublabel: "$199.00", tone: "save" },
+    badge: {
+      label: "Save",
+      sublabel: "$199.00",
+      tone: "save",
+    },
     reviewCount: 152,
     shippingLabel: "Free Shipping",
     stockStatus: "in-stock",
     image: opodpro,
+
+    category: "Tablets",
+    brand: "OPod",
+    rating: 5,
+    screenSize: '12.9"',
+    memory: "64GB",
+    colors: ["#808080", "#C0C0C0"],
+    condition: "New",
+    year: 2023,
+    swatches: ["#808080", "#C0C0C0"],
   },
+
   {
     id: "xioma-redmi-note-11-pro",
     name: "Xioma Redmi Note 11 Pro 256GB 2023, Black Smartphone",
@@ -153,9 +283,19 @@ export const shopProducts: ProductCard[] = [
     reviewCount: 2,
     shippingLabel: "Free Shipping",
     stockStatus: "in-stock",
-    swatches: ["#1c1c1e", "#4b2e63"],
     image: redmi11,
+
+    category: "Phones",
+    brand: "Xioma",
+    rating: 4,
+    screenSize: '6.6"',
+    memory: "256GB",
+    colors: ["#1C1C1E", "#4B2E63"],
+    condition: "New",
+    year: 2023,
+    swatches: ["#1C1C1E", "#4B2E63"],
   },
+
   {
     id: "apod-pro-tablet-cellular",
     name: "aPod Pro Tablet 2023 LTE + Wifi, GPS Cellular",
@@ -164,8 +304,19 @@ export const shopProducts: ProductCard[] = [
     shippingLabel: "$2.98 Shipping",
     stockStatus: "in-stock",
     image: apodpro,
+
+    category: "Tablets",
+    brand: "aPod",
+    rating: 4,
+    screenSize: '11"',
+    memory: "128GB",
+    colors: ["#C0C0C0"],
+    condition: "New",
+    year: 2023,
+    swatches: ["#C0C0C0"],
   },
-  {
+
+    {
     id: "lenovo-redmi-note-5",
     name: "Lenovo Redmi Note 5, 64GB",
     price: 69,
@@ -173,20 +324,150 @@ export const shopProducts: ProductCard[] = [
     shippingLabel: "Free Shipping",
     stockStatus: "in-stock",
     image: lenovo,
+
+    category: "Phones",
+    brand: "Lenovo",
+    rating: 4,
+    screenSize: '6.1"',
+    memory: "64GB",
+    colors: ["#000000", "#FFFFFF"],
+    condition: "Used",
+    year: 2021,
+    swatches: ["#000000", "#FFFFFF"],
   },
+
   {
     id: "lg-pro-tablet",
     name: "LG Pro Tablet 2023 LTE + Wifi, GPS Cellular",
     priceRange: [179, 429],
     device: "tablet",
-    badge: { label: "New", tone: "new" },
+    badge: {
+      label: "New",
+      tone: "new",
+    },
     shippingLabel: "$2.98 Shipping",
     stockStatus: "pre-order",
     image: lg,
+
+    category: "Tablets",
+    brand: "LG",
+    rating: 4,
+    screenSize: '10.9"',
+    memory: "128GB",
+    colors: ["#E5E7EB", "#6B7280"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#E5E7EB", "#6B7280"],
   },
+
   {
     id: "samsong-x6-2",
     name: "Samsong Galaxy X6 Ultra LTE 4G/128 Gb, Black Smartphone",
+    price: 659,
+    device: "phone-alt",
+    reviewCount: 5,
+    shippingLabel: "Free Shipping",
+    freeGift: true,
+    stockStatus: "in-stock",
+    image: x6u,
+
+    category: "Phones",
+    brand: "Samsong",
+    rating: 5,
+    screenSize: '6.8"',
+    memory: "128GB",
+    colors: ["#2A3A63", "#4B2E63"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#2A3A63", "#4B2E63"],
+  },
+
+  {
+    id: "srok-oled-128-2",
+    name: "SROK Smart Phone 128GB, Oled Retina",
+    price: 579,
+    originalPrice: 859,
+    device: "phone",
+    badge: {
+      label: "Save",
+      sublabel: "$199.00",
+      tone: "save",
+    },
+    reviewCount: 152,
+    shippingLabel: "Free Shipping",
+    stockStatus: "in-stock",
+    image: srok1,
+
+    category: "Phones",
+    brand: "SROK",
+    rating: 5,
+    screenSize: '6.7"',
+    memory: "128GB",
+    colors: ["#111827", "#2563EB"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#111827", "#2563EB"],
+  },
+
+  {
+    id: "srok-oled-128-3",
+    name: "SROK Smart Phone 128GB, Oled Retina",
+    price: 579,
+    originalPrice: 859,
+    device: "phone",
+    badge: {
+      label: "Save",
+      sublabel: "$199.00",
+      tone: "save",
+    },
+    shippingLabel: "Free Shipping",
+    stockStatus: "in-stock",
+    image: srokm,
+
+    category: "Phones",
+    brand: "SROK",
+    rating: 4,
+    screenSize: '6.7"',
+    memory: "128GB",
+    colors: ["#000000", "#4B5563"],
+    condition: "New",
+    year: 2023,
+    swatches: ["#000000", "#4B5563"],
+  },
+
+  {
+    id: "apod-pro-tablet-2",
+    name: "aPod Pro Tablet 2023 LTE + Wifi, GPS Cellular 12.9 Inch, 512GB",
+    priceRange: [979, 1259],
+    device: "tablet",
+    badge: {
+      label: "New",
+      tone: "new",
+    },
+    shippingLabel: "$2.98 Shipping",
+    stockStatus: "in-stock",
+    image: apodpro,
+
+    category: "Tablets",
+    brand: "aPod",
+    rating: 5,
+    screenSize: '12.9"',
+    memory: "512GB",
+    colors: ["#C0C0C0", "#6B7280"],
+    condition: "New",
+    year: 2024,
+    swatches: ["#C0C0C0", "#6B7280"],
+  },
+
+    {
+    id: "samsong-x6-4",
+    name: "Samsong Galaxy X6 Ultra LTE 4G/128 Gb, Black Smartphone",
+    brand: "Samsong",
+    memory: "128GB",
+    screenSize: "6.7\"",
+    colors: "#2a3a63",
+    condition: "New",
+    rating: 5,
     price: 659,
     device: "phone-alt",
     reviewCount: 5,
@@ -197,8 +478,14 @@ export const shopProducts: ProductCard[] = [
     image: x6u,
   },
   {
-    id: "srok-oled-128-2",
+    id: "srok-oled-128-4",
     name: "SROK Smart Phone 128GB, Oled Retina",
+    brand: "SROK",
+    memory: "128GB",
+    screenSize: "6.1\"",
+    colors: "#000000",
+    condition: "New",
+    rating: 5,
     price: 579,
     originalPrice: 859,
     device: "phone",
@@ -209,19 +496,32 @@ export const shopProducts: ProductCard[] = [
     image: srok1,
   },
   {
-    id: "srok-oled-128-3",
+    id: "srok-oled-128-5",
     name: "SROK Smart Phone 128GB, Oled Retina",
+    brand: "SROK",
+    memory: "128GB",
+    screenSize: "6.1\"",
+    colors: "#ffffff",
+    condition: "Refurbished",
+    rating: 4,
     price: 579,
     originalPrice: 859,
     device: "phone",
     badge: { label: "Save", sublabel: "$199.00", tone: "save" },
+    reviewCount: 88,
     shippingLabel: "Free Shipping",
     stockStatus: "in-stock",
     image: srokm,
   },
   {
-    id: "apod-pro-tablet-2",
+    id: "apod-pro-tablet-3",
     name: "aPod Pro Tablet 2023 LTE + Wifi, GPS Cellular 12.9 Inch, 512GB",
+    brand: "aPod",
+    memory: "512GB",
+    screenSize: "12.9\"",
+    colors: "#c0c0c0",
+    condition: "New",
+    rating: 5,
     priceRange: [979, 1259],
     device: "tablet",
     badge: { label: "New", tone: "new" },
@@ -232,17 +532,30 @@ export const shopProducts: ProductCard[] = [
   {
     id: "samsong-x6-3",
     name: "Samsong Galaxy X6 Ultra LTE 4G/128 Gb, Black Smartphone",
+    brand: "Samsong",
+    memory: "128GB",
+    screenSize: "6.7\"",
+    colors: "#4b2e63",
+    condition: "Open Box",
+    rating: 5,
     price: 659,
     device: "phone-alt",
     reviewCount: 5,
     shippingLabel: "Free Shipping",
     freeGift: true,
     stockStatus: "in-stock",
+    swatches: ["#2a3a63", "#4b2e63"],
     image: x6,
   },
   {
     id: "xiaomi-redmi-note-5-2",
     name: "Xiaomi Redmi Note 5, 64GB",
+    brand: "Xiaomi",
+    memory: "64GB",
+    screenSize: "6.0\"",
+    colors: "#000000",
+    condition: "Used",
+    rating: 4,
     price: 1239,
     originalPrice: 1619,
     device: "phone-alt",
@@ -251,4 +564,3 @@ export const shopProducts: ProductCard[] = [
     image: redmi5,
   },
 ];
-

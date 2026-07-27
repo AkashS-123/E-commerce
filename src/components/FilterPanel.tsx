@@ -1,11 +1,11 @@
-import { useState } from "react";
+import type * as React from "react";
 import { Star } from "lucide-react";
 import {
-  brandFilters,
+  colorFilters,
   ratingFilters,
   screenSizeFilters,
-  colorFilters,
   memoryFilters,
+  brandFilters,
   conditionFilters,
 } from "../data/shopFilters";
 
@@ -36,28 +36,73 @@ function Checkbox({
   );
 }
 
-export default function FilterPanel() {
-  const [minPrice, setMinPrice] = useState("0");
-  const [maxPrice, setMaxPrice] = useState("10000");
-  const [brands, setBrands] = useState<Record<string, boolean>>({});
-  const [ratings, setRatings] = useState<Record<number, boolean>>({});
-  const [screenSizes, setScreenSizes] = useState<Record<string, boolean>>({});
-  const [color, setColor] = useState<string | null>(null);
-  const [memory, setMemory] = useState<Record<string, boolean>>({});
-  const [conditions, setConditions] = useState<Record<string, boolean>>({});
+type FilterPanelProps = {
+  minPrice: string;
+  maxPrice: string;
+  setMinPrice: (value: string) => void;
+  setMaxPrice: (value: string) => void;
 
-  function toggle(setter: React.Dispatch<React.SetStateAction<Record<string, boolean>>>, key: string) {
-    setter((prev) => ({ ...prev, [key]: !prev[key] }));
+  color: string | null;
+  setColor: React.Dispatch<React.SetStateAction<string | null>>;
+
+  devices: Record<string, boolean>;
+  setDevices: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+
+  ratings: Record<number, boolean>;
+  setRatings: React.Dispatch<React.SetStateAction<Record<number, boolean>>>;
+
+  screenSizes: Record<string, boolean>;
+  setScreenSizes: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+
+  memory: Record<string, boolean>;
+  setMemory: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+
+  brands: Record<string, boolean>;
+  setBrands: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+
+  conditions: Record<string, boolean>;
+  setConditions: React.Dispatch<React.SetStateAction<Record<string, boolean>>>;
+};
+
+export default function FilterPanel({
+  minPrice,
+  maxPrice,
+  setMinPrice,
+  setMaxPrice,
+  color,
+  setColor,
+  devices,
+  setDevices,
+  ratings,
+  setRatings,
+  screenSizes,
+  setScreenSizes,
+  memory,
+  setMemory,
+  brands,
+  setBrands,
+  conditions,
+  setConditions,
+}: FilterPanelProps) {
+  function toggle<T extends Record<string, boolean>>(
+    setter: React.Dispatch<React.SetStateAction<T>>,
+    key: keyof T
+  ) {
+    setter((prev) => ({
+      ...prev,
+      [key]: !prev[key],
+    }));
   }
 
   function resetAll() {
     setMinPrice("0");
     setMaxPrice("10000");
-    setBrands({});
+    setColor(null);
+    setDevices({});
     setRatings({});
     setScreenSizes({});
-    setColor(null);
     setMemory({});
+    setBrands({});
     setConditions({});
   }
 
@@ -116,7 +161,9 @@ export default function FilterPanel() {
                   <input
                     type="checkbox"
                     checked={!!ratings[r.stars]}
-                    onChange={() => setRatings((prev) => ({ ...prev, [r.stars]: !prev[r.stars] }))}
+                    onChange={() =>
+                      setRatings((prev) => ({ ...prev, [r.stars]: !prev[r.stars] }))
+                    }
                     className="h-4 w-4 rounded border-gray-300 text-brand-500 focus:ring-brand-500 dark:border-gray-600"
                   />
                   {Array.from({ length: r.stars }).map((_, i) => (
@@ -163,8 +210,41 @@ export default function FilterPanel() {
                   "h-7 w-7 rounded-full border-2 transition " +
                   (color === hex ? "border-brand-500" : "border-transparent")
                 }
-                style={{ backgroundColor: hex, boxShadow: hex === "#ffffff" ? "inset 0 0 0 1px #e5e7eb" : undefined }}
+                style={{
+                  backgroundColor: hex,
+                  boxShadow: hex === "#ffffff" ? "inset 0 0 0 1px #e5e7eb" : undefined,
+                }}
               />
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <h3 className="text-sm font-bold text-gray-800 dark:text-gray-100">Device</h3>
+          <div className="mt-3 space-y-2">
+            {[
+              { key: "phone", label: "Phone" },
+              { key: "phone-alt", label: "Smart Phone" },
+              { key: "tablet", label: "Tablet" },
+              { key: "laptop", label: "Laptop" },
+            ].map((device) => (
+              <label
+                key={device.key}
+                className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
+              >
+                <input
+                  type="checkbox"
+                  checked={!(devices?.[device.key] ?? true)}
+                  onChange={() =>
+                    setDevices((prev) => ({
+                      ...prev,
+                      [device.key]: !prev[device.key],
+                    }))
+                  }
+                  className="h-4 w-4 rounded border-gray-300 text-brand-500"
+                />
+                {device.label}
+              </label>
             ))}
           </div>
         </div>
