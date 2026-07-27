@@ -1,10 +1,10 @@
 import { CheckCircle2, XCircle, Clock, Heart, Eye } from "lucide-react";
 import { Link } from "react-router-dom";
-import type { ProductCard } from "../types/product";
+import type { ProductSummary } from "../types/product";
 // import ProductGlyph from "./ProductGlyph";
 
 interface ProductCardTileProps {
-  product: ProductCard;
+  product: ProductSummary;
   compact?: boolean;
   interactive?: boolean;
   linkTo?: string;

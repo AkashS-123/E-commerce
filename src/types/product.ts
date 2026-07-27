@@ -1,4 +1,4 @@
-export interface ProductCard {
+export interface ProductSummary {
   id: string;
   name: string;
 
@@ -27,7 +27,9 @@ export interface ProductCard {
   stockStatus?: "in-stock" | "out-of-stock" | "pre-order" | "contact";
 
   swatches?: string[];
+}
 
+export interface ProductCard extends ProductSummary {
   /* ===== New fields for filtering ===== */
 
   category: string;

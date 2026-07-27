@@ -1,4 +1,3 @@
-import type { ProductCard } from "../types/product";
 import srok from "../assets/srok.png"
 import apod from "../assets/apod.png"
 import opod from "../assets/opod.png"
@@ -7,6 +6,7 @@ import microsute from "../assets/microsute.png"
 import redmi11 from "../assets/redmi11.png"
 import apodpro from "../assets/apodpro.png"
 import srok1 from "../assets/srok1.png"
+import type { ProductSummary } from "../types/product";
 
 export interface ColorOption {
   id: string;
@@ -72,7 +72,7 @@ export const frequentlyBoughtWith = [
   },
 ];
 
-export const relatedProducts = [
+export const relatedProducts: ProductSummary[] = [
   {
     id: "srok-oled-128",
     name: "SROK Smart Phone 128GB, Oled Retina",
@@ -131,7 +131,7 @@ export const relatedProducts = [
   },
 ];
 
-export const recentlyViewed = [
+export const recentlyViewed: ProductSummary[] = [
   {
     id: "xomie-remid-8",
     name: "Xomie Remid 8 Sport Water Resistance Watch",
