@@ -73,30 +73,66 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [user]);
 
   function login(email: string, password: string) {
-    const accounts = loadAccounts();
-    const match = accounts.find(
-      (a) => a.email.toLowerCase() === email.trim().toLowerCase(),
-    );
-    if (!match || match.password !== password) {
-      return { ok: false as const, message: "Incorrect email or password." };
-    }
-    const { password: _pw, ...publicUser } = match;
-    setUser(publicUser);
-    return { ok: true as const };
+  const accounts = loadAccounts();
+
+  console.log("Accounts:", accounts);
+  console.log("Login Email:", email);
+  console.log("Login Password:", password);
+
+  const match = accounts.find(
+    (a) => a.email.trim().toLowerCase() === email.trim().toLowerCase()
+  );
+
+  if (!match) {
+    return {
+      ok: false as const,
+      message: "Account not found. Please register first.",
+    };
   }
 
-  function register(firstName: string, lastName: string, email: string, password: string) {
+  if (match.password.trim() !== password.trim()) {
+    return {
+      ok: false as const,
+      message: "Incorrect password.",
+    };
+  }
+
+  const { password: _pw, ...publicUser } = match;
+  setUser(publicUser);
+
+  return { ok: true as const };
+}
+
+  function register(
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string,
+  ) {
     const accounts = loadAccounts();
-    const exists = accounts.some(
-      (a) => a.email.toLowerCase() === email.trim().toLowerCase(),
+    const existing = accounts.some(
+      (a) => a.email.trim().toLowerCase() === email.trim().toLowerCase(),
     );
-    if (exists) {
-      return { ok: false as const, message: "An account with this email already exists." };
+
+    if (existing) {
+      return {
+        ok: false as const,
+        message: "An account with that email already exists.",
+      };
     }
-    const newAccount: StoredAccount = { firstName, lastName, email: email.trim(), password };
-    saveAccounts([...accounts, newAccount]);
+
+    const newAccount: StoredAccount = {
+      firstName: firstName.trim(),
+      lastName: lastName.trim(),
+      email: email.trim().toLowerCase(),
+      password,
+    };
+    accounts.push(newAccount);
+    saveAccounts(accounts);
+
     const { password: _pw, ...publicUser } = newAccount;
     setUser(publicUser);
+
     return { ok: true as const };
   }
 

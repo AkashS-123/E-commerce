@@ -11,6 +11,8 @@ import {
   Sun,
 } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
+import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 const navLinks = [
   { label: "Homes", to: "/" },
@@ -22,6 +24,8 @@ const navLinks = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+const { itemCount } = useCart();
+const { user, logout } = useAuth();
 
   return (
     <header className="bg-white dark:bg-gray-950">
@@ -84,26 +88,54 @@ export default function Header() {
             <Heart size={18} />
           </button>
 
-          <Link
-            to="/login"
-            className="hidden items-center gap-2 sm:flex"
-          >
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
-              <User size={18} />
-            </span>
-            <span className="text-xs leading-tight text-gray-500 dark:text-gray-400">
-              WELCOME
-              <span className="block text-sm font-bold text-gray-900 dark:text-white">
-                Log in / Register
-              </span>
-            </span>
-          </Link>
+          {user ? (
+        <div className="hidden items-center gap-2 sm:flex">
+        <Link
+         to="/profile/account-info"
+      className="flex items-center gap-2"
+    >
+      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
+        <User size={18} />
+      </span>
+
+      <span className="text-xs leading-tight text-gray-500 dark:text-gray-400">
+        WELCOME
+        <span className="block text-sm font-bold text-gray-900 dark:text-white">
+          {user.firstName} {user.lastName}
+        </span>
+      </span>
+    </Link>
+
+    <button
+      onClick={logout}
+      className="text-xs font-semibold text-red-500 hover:text-red-600"
+    >
+      Logout
+    </button>
+  </div>
+) : (
+  <Link
+    to="/login"
+    className="hidden items-center gap-2 sm:flex"
+  >
+    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
+      <User size={18} />
+    </span>
+
+    <span className="text-xs leading-tight text-gray-500 dark:text-gray-400">
+      WELCOME
+      <span className="block text-sm font-bold text-gray-900 dark:text-white">
+        Log in / Register
+      </span>
+    </span>
+  </Link>
+)}
 
           <Link to="/cart" className="flex items-center gap-2">
             <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
               <ShoppingCart size={18} />
-              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-brand-500 text-[10px] font-bold text-white">
-                5
+              <span className="absolute -top-1 -right-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
+              {itemCount}
               </span>
             </span>
             <span className="hidden text-xs leading-tight text-gray-500 dark:text-gray-400 sm:block">
