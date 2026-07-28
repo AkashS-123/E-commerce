@@ -20,11 +20,10 @@ export default function PhonePromoBanner() {
       </button>
 
       <img
-        src={mii}
-        alt="Redmi Note 12 Pro+ 5G"
-        className=" absolute w-full h-full right-1 object-contain"
-        style={{ bottom: "5px" }}
-      />
+  src={mii}
+  alt="Redmi Note 12 Pro+ 5G"
+  className="absolute inset-0 w-full h-full object-contain"
+/>
     </div>
   );
 }

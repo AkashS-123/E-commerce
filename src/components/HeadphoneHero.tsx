@@ -17,13 +17,12 @@ export default function HeadphoneHero() {
   }
 
   return (
-    <div className="relative">
-      {/* Big image, bleeding off the edges */}
-      <img
-        src={headset}
-        alt="Headphone"
-        className="absolute w-full h-full object-contain"
-      />
+    <div className="relative overflow-hidden rounded-2xl">
+  <img
+    src={headset}
+    alt="Headphone"
+    className="absolute inset-0 w-full h-full object-contain"
+  />
 
       {/* Text content, sits above the image */}
       <div className="relative z-10 flex min-h-[380px] flex-col justify-center px-4 sm:px-10 py-8 max-w-full sm:max-w-[360px]">

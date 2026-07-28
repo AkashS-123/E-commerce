@@ -46,3 +46,8 @@ input:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+html,
+body {
+  overflow-x: hidden;
+}
