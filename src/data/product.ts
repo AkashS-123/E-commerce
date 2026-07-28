@@ -1,4 +1,3 @@
-import type { ProductCard } from "../types/product";
 import srok from "../assets/srok.png"
 import apod from "../assets/apod.png"
 import opod from "../assets/opod.png"
