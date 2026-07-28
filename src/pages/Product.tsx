@@ -479,7 +479,7 @@ export default function Product() {
           </h2>
           <div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-5">
             {relatedProducts.map((product) => (
-              <ProductCardTile key={product.id} product={product} />
+              <ProductCardTile key={product.id} product={product as any} />
             ))}
           </div>
         </div>
@@ -496,7 +496,7 @@ export default function Product() {
           </div>
           <div className="mt-6 grid grid-cols-2 gap-6 sm:grid-cols-4">
             {recentlyViewed.map((product) => (
-              <ProductCardTile key={product.id} product={product} compact />
+              <ProductCardTile key={product.id} product={product as any} compact />
             ))}
           </div>
         </div>

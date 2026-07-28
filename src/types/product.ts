@@ -23,6 +23,7 @@ export interface ProductCard {
   freeGift?: boolean;
 
   inStock?: boolean;
+  
 
   stockStatus?: "in-stock" | "out-of-stock" | "pre-order" | "contact";
 
