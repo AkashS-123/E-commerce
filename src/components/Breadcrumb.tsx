@@ -8,7 +8,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
   return (
     <div className="border-b border-gray-100 bg-white dark:border-gray-800 dark:bg-gray-950">
       <div className="mx-auto max-w-7xl px-6 py-5">
-        <nav className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+        <nav className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
           {items.map((item, i) => {
             const isLast = i === items.length - 1;
             return (

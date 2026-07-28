@@ -29,9 +29,9 @@ const { user, logout } = useAuth();
 
   return (
     <header className="bg-white dark:bg-gray-950">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4">
-        <Link to="/" className="flex items-center gap-2 shrink-0">
-          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-500 text-white">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-4 sm:gap-6 sm:px-6">
+        <Link to="/" className="flex min-w-0 items-center gap-2 shrink-0">
+          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-500 text-white">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path
                 d="M4 12c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8"
@@ -64,11 +64,11 @@ const { user, logout } = useAuth();
           ))}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-4">
           <button
             type="button"
             aria-label="Compare"
-            className="hidden h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-brand-50 hover:text-brand-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 sm:flex"
+            className="hidden h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-brand-50 hover:text-brand-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 sm:flex sm:h-10 sm:w-10"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
               <path
@@ -83,9 +83,9 @@ const { user, logout } = useAuth();
           <button
             type="button"
             aria-label="Wishlist"
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-brand-50 hover:text-brand-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-brand-50 hover:text-brand-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 sm:h-10 sm:w-10"
           >
-            <Heart size={18} />
+            <Heart size={17} />
           </button>
 
           {user ? (
@@ -132,8 +132,8 @@ const { user, logout } = useAuth();
 )}
 
           <Link to="/cart" className="flex items-center gap-2">
-            <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300">
-              <ShoppingCart size={18} />
+            <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 dark:bg-gray-800 dark:text-gray-300 sm:h-10 sm:w-10">
+              <ShoppingCart size={17} />
               <span className="absolute -top-1 -right-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-brand-500 px-1 text-[10px] font-bold text-white">
               {itemCount}
               </span>
@@ -152,18 +152,18 @@ const { user, logout } = useAuth();
             aria-label={
               theme === "light" ? "Switch to dark mode" : "Switch to light mode"
             }
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-brand-50 hover:text-brand-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-500 transition hover:bg-brand-50 hover:text-brand-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 md:hidden sm:h-10 sm:w-10"
           >
-            {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+            {theme === "light" ? <Moon size={15} /> : <Sun size={15} />}
           </button>
 
           <button
             type="button"
             aria-label="Toggle menu"
             onClick={() => setMenuOpen((o) => !o)}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 lg:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 lg:hidden sm:h-10 sm:w-10"
           >
-            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+            {menuOpen ? <X size={17} /> : <Menu size={17} />}
           </button>
         </div>
       </div>
