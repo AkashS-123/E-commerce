@@ -26,7 +26,7 @@ export default function HeadphoneHero() {
       />
 
       {/* Text content, sits above the image */}
-      <div className="relative z-10 flex min-h-[380px] flex-col justify-center px-10 py-8 max-w-[360px]">
+      <div className="relative z-10 flex min-h-[380px] flex-col justify-center px-4 sm:px-10 py-8 max-w-full sm:max-w-[360px]">
         <h2 className="text-3xl font-extrabold text-white sm:text-4xl leading-tight">
           {slide.title}
           <br />

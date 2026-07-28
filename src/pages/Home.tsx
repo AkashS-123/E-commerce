@@ -298,7 +298,7 @@ export default function Home() {
                 <img
                   src={hero}
                   alt="Sport water resistance watch"
-                  className="absolute -right-2 bottom-0 h-[130px] w-[130px] object-contain"
+                  className="relative overflow-hidden -right-2 bottom-0 h-[130px] w-[130px] object-contain"
                 />
               </a>
 
@@ -317,7 +317,7 @@ export default function Home() {
                 <img
                   src={swat1}
                   alt="Okodo Hero 11+ Black"
-                  className="absolute -right-3 bottom-0 h-[120px] w-[150px] object-contain"
+                  className="relative overflow-hidden -right-3 bottom-0 h-[120px] w-[150px] object-contain"
                 />
               </a>
             </div>
